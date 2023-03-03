@@ -10,9 +10,12 @@ function handleImgClick(e) {
     return;
   }
 
-const instance = basicLightbox.create(
-	document.querySelector('.gallery a')
-)
+const instance = basicLightbox.create(`
+    <img src="${e.target.dataset.source}" 
+    alt="${description}" 
+    width="800" height="600">
+`)
+
 instance.show()
 }
 
