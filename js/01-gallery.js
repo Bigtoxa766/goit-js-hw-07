@@ -4,6 +4,18 @@ import { galleryItems } from './gallery-items.js';
 const galleryEl = document.querySelector('.gallery')
 galleryEl.addEventListener('click', handleImgClick)
 
+function handleImgClick(e) {
+  e.preventDefault()
+  if (e.target.nodeName !== 'IMG') {
+    return;
+  }
+
+const instance = basicLightbox.create(
+	document.querySelector('.gallery a')
+)
+instance.show()
+}
+
 const makeGalleryGrid = ({ preview, original, description }) => `
 <div class="gallery__item">
   <a class="gallery__link" href="${original}">
@@ -16,20 +28,5 @@ const makeGalleryGrid = ({ preview, original, description }) => `
   </a>
 </div>`;
 
-function handleImgClick(e) {
-  e.preventDefault()
-  if (e.target.nodeName !== 'IMG') {
-    return;
-  }
-
-  const modal = basicLightbox.create(`gallery__link`)
-
-modal.show()
-}
-
 const markupGallery = galleryItems.map(e => makeGalleryGrid(e)).join('');
 galleryEl.insertAdjacentHTML('afterbegin', markupGallery)
-
-
-// 2. Реалізація делегування на div.gallery і отримання url 
-// великого зображення.
