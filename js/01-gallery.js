@@ -12,7 +12,7 @@ function handleImgClick(e) {
 
 const instance = basicLightbox.create(`
     <img src="${e.target.dataset.source}" 
-    alt="${description}" 
+    alt="${e.target.alt}" 
     width="800" height="600">
 `)
 
